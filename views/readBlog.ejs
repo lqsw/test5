@@ -28,7 +28,7 @@
                 $('#flag').text("保存");
             }
             else {
-                $.post('/readBlog',
+                $.post('/editBlog',
                     {
                         "_id": id,
                         "inputTitle": document.getElementById('inputTitle').value,
