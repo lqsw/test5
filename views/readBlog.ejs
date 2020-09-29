@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/javascripts/jQuery.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>详细信息</title>
+    <style type="text/css">
+        .main {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 80px;
+        }
+
+        .buttonS {
+            margin-left: 900px;
+        }
+    </style>
+    <script type="text/javascript">
+        function edit(id) {
+            if ($('#flag').text() == "编辑") {
+                $('#inputTitle').attr("disabled", false);
+                $('#inputContent').attr("disabled", false);
+                $('#flag').text("保存");
+            }
+            else {
+                $.post('/readBlog',
+                    {
+                        "_id": id,
+                        "inputTitle": document.getElementById('inputTitle').value,
+                        "inputContent": document.getElementById('inputContent').value
+                    }, function (date) {
+                    });
+                $('#inputTitle').attr("disabled", true);
+                $('#inputContent').attr("disabled", true);
+                $('#flag').text("编辑");
+                alert("保存成功！");
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">博客信息</a>
+    </nav>
+    <div class="main">
+        <form>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">标题</span>
+                </div>
+                <input id="inputTitle" name="inputTitle" disabled="disabled" type="text" class="form-control"
+                    value="<%=title%>" style="width: 500px;" />
+            </div>
+            <div class="form-group">
+                <label for="comment">内容</label>
+                <textarea id="inputContent" name="inputContent" disabled="disabled" class="form-control" rows="8"
+                    id="comment"><%=content%></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="buttonS">
+        <button class="btn btn-primary" id="flag" name=<%=_id%> onclick="edit(this.name)">编辑</button>
+        <a href="/blog" class="btn btn-primary" style="margin-right: 20px;">返回</a>
+    </div>
+</body>
+
+</html>
