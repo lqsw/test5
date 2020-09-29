@@ -18,18 +18,18 @@ router.get('/', async (req, res, next) => {
     result.res[i].author_id = req.session.userName;
     result.res[i]["date"] = timestampToTime(timestamp);
   }
-   res.json(result.res);
-  // res.render("blog", { Blog: result.res });
+  //  res.json(result.res);
+  res.render("blog", { Blog: result.res });
 });
 
-router.post('/', async (req, res) => {
-  console.info(`[deleteBlog]:==:> start`)
-  var body = req.body;
-  var _id = body._id;
-  console.log(req)
-  const result = await blogDubbo.service.blogService.deleteBlog(_id);
-  res.json(result);
-})
+// router.post('/', async (req, res) => {
+//   console.info(`[deleteBlog]:==:> start`)
+//   var body = req.body;
+//   var _id = body._id;
+//   console.log(req)
+//   const result = await blogDubbo.service.blogService.deleteBlog(_id);
+//   res.json(result);
+// })
 
 function timestampToTime(timestamp) {
   var date = new Date(timestamp);

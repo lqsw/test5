@@ -11,6 +11,7 @@ var blogRouter = require('./routes/blog');
 var writeRouter = require('./routes/writeBlog');
 var readRouter = require('./routes/readBlog');
 var editRouter = require('./routes/editBlog');
+var deleteRouter = require('./routes/deleteBlog');
 var app = express();
 
 // view engine setup
@@ -60,7 +61,8 @@ app.use('/login', loginRouter);
 app.use('/blog', blogRouter);
 app.use('/writeBlog', writeRouter);
 app.use('/readBlog', readRouter);
-app.use('/editBlog',editRouter)
+app.use('/editBlog',editRouter);
+app.use('/deleteBlog',deleteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

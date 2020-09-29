@@ -13,7 +13,7 @@
     function deleteBlog(id) {
       var r = confirm("确认删除吗？");
       if (r == true) {
-        $.post("http://localhost:2222/blog", { _id: id },
+        $.post("http://localhost:2222/deleteBlog", { _id: id },
           function (result) {
 
           });
