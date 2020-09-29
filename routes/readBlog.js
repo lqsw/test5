@@ -8,15 +8,15 @@ router.get('/', async (req, res) => {
     console.info(`[readBlog]:==:> start`)
     var _id = URL.parse(req.url, true).query._id;
     const result = await blogDubbo.service.blogService.readBlog(_id);
-    // res.json(result.res);
-    res.render("readBlog",
-        {
-            title: result.res.title,
-            content: result.res.content,
-            author: result.res.author_id,
-            _id: result.res._id,
-            time: result.res.date
-        });
+    res.json(result.res);
+    // res.render("readBlog",
+    //     {
+    //         title: result.res.title,
+    //         content: result.res.content,
+    //         author: result.res.author_id,
+    //         _id: result.res._id,
+    //         time: result.res.date
+    //     });
 });
 
 // router.post('/', async (req, res) => {

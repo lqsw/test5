@@ -18,8 +18,8 @@ router.get('/', async (req, res, next) => {
     result.res[i].author_id = req.session.userName;
     result.res[i]["date"] = timestampToTime(timestamp);
   }
-  //  res.json(result.res);
-  res.render("blog", { Blog: result.res });
+   res.json(result.res);
+  // res.render("blog", { Blog: result.res });
 });
 
 router.post('/', async (req, res) => {
